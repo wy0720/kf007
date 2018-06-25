@@ -1,0 +1,14 @@
+.son-icon{
+	width: 41px;
+	height: 41px;
+}
+.son-icon-span{
+	font-size: 11px;
+}
+.mui-media-body{
+	font-size: 11px;
+}
+
+.mui-scrollbar {
+            display: none !important;
+        }

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>华夏家博兼职平台</title>
+    
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    
+    <link href="css/icon.css" rel="stylesheet"/>
+	<script type='text/javascript' src='https://at.alicdn.com/t/font_718176_0svn376r9mkc.js' charset='utf-8'></script>
+    
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">工资绩效</h1>
+	</header>
+	
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item mui-active" href="page/salary/salary-list.html">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">工资绩效</span>
+	    </a>
+	    <a class="mui-tab-item" href="page/enroll/enroll-list.html">
+	        <span class="mui-icon mui-icon-phone"></span>
+	        <span class="mui-tab-label">报班</span>
+	    </a>
+	    <a class="mui-tab-item" href="page/message/message-list.html">
+	        <span class="mui-icon mui-icon-email">
+	        	<span class="mui-badge mui-badge-red">5</span>
+	        </span>
+	        <span class="mui-tab-label">消息通知</span>
+	    </a>
+	    <a class="mui-tab-item" href="page/exam/exam-list.html">
+	        <span class="mui-icon mui-icon-compose"></span>
+	        <span class="mui-tab-label">考试培训</span>
+	    </a>
+	</nav>
+	
+	<div class="mui-content">
+		<div>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a href="">
+				       
+				        <svg class="mui-icon son-icon icon">
+				            <use xlink:href="#icon-tubiaozhizuomoban-"></use>
+				        </svg>
+				        <span class="mui-media-body" style="font-size: 11px;">总工资</span>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a href="#">
+				        	<svg class="mui-icon son-icon icon">
+				            <use xlink:href="#icon-tubiaozhizuomoban-3"></use>
+				        </svg>
+	
+				        <div class="mui-media-body son-icon-span " style="font-size: 11px;">今日工资</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				    <a href="#">
+				        <svg class="mui-icon son-icon icon">
+				            <use xlink:href="#icon-tubiaozhizuomoban-2"></use>
+				        </svg>
+				        <span class="mui-media-body" style="font-size: 11px;">今日绩效</span>
+				    </a>
+				</li>
+		 	</ul>  
+		</div>
+	</div>   	
+	
+    <script src="js/mui.min.js"></script>
+	<script type='text/javascript'>
+		mui.init();
+		//设置默认打开首页显示的子页序号；
+		var Index=0;
+		//把子页的路径写在数组里面
+		var subpages = ['page/salary/salary-list.html','page/enroll/enroll-list.html','page/message/message-list.html','page/exam/exam-list.html'];
+		mui.plusReady(function(){
+			var self = plus.webview.currentWebview();
+			for(var i=0;i<subpages.length;i++){
+				if(i !== 0){
+					var sub = plus.webview.create(
+						subpages[i],
+						subpages[i],
+						{
+							top:'45px',
+							bottom:'50px'
+						}
+					);	
+				}else{
+					var sub = plus.webview.create(
+						subpages[i],
+						subpages[i],
+						{
+							top:'145px',
+							bottom:'50px'
+						}
+					);
+				}
+				
+				if(i !== Index){
+					sub.hide();
+				}
+				self.append(sub);
+			}
+		});	
+		
+		var activeTab = subpages[Index],title=document.querySelector(".mui-title");
+		
+		mui('.mui-bar-tab').on('tap', 'a', function(e) {
+			//获取目标子页的id
+		    var targetTab = this.getAttribute('href');
+		    if (targetTab == activeTab) {
+		        return;
+		    }
+		    //更换标题
+		    title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+		    //显示目标选项卡
+		    plus.webview.show(targetTab);
+		    //隐藏当前选项卡
+		    plus.webview.hide(activeTab);
+		    //更改当前活跃的选项卡
+		    activeTab = targetTab;
+		});
+	</script>
+</body>
+</html>
+

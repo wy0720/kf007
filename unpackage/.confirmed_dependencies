@@ -1,0 +1,20 @@
+{
+	"index.html": {
+		"resources": [
+			"page/salary/salary-list.html",
+			"salary-list.html"
+		],
+		"refer": [
+			"page/salary/salary-list.html",
+			"salary-list.html",
+			"page/enroll/enroll-list.html",
+			"page/message/message-list.html",
+			"page/exam/exam-list.html"
+		]
+	},
+	"page/message/message-list.html": {
+		"refer": [
+			"page/message/message-detail.html"
+		]
+	}
+}
